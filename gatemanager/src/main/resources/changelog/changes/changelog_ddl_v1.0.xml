@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id=" 202012132225" author="gvozden.zavisic" failOnError="true">
+
+
+        <createTable tableName="gate">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="number" type="VARCHAR(64)">
+                <constraints nullable="true" unique="true"/>
+            </column>
+            <column name="available" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unavailable_from" type="time"/>
+            <column name="unavailable_to" type="time"/>
+            <column name="created" type="datetime"/>
+            <column name="modified" type="datetime"/>
+        </createTable>
+
+        <createTable tableName="flight">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="number" type="VARCHAR(32)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="arrival_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="datetime"/>
+            <column name="modified" type="datetime"/>
+            <column name="gate_id" type="BIGINT"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="gate_id"
+                                 baseTableName="flight"
+                                 constraintName="fk_flight_gate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gate"/>
+    </changeSet>
+
+
+</databaseChangeLog>

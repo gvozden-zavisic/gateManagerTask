@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="202012152232" author="gvozden.zavisic" context="develop" failOnError="true">
+        <insert tableName="gate">
+            <column name="id" value="1"/>
+            <column name="number" value="gt1"/>
+            <column name="available" value="1"/>
+            <column name="unavailable_from" value="11:00:00"/>
+            <column name="unavailable_to" value="13:00:00"/>
+            <column name="created" value="2020-06-01 11:49:39"/>
+        </insert>
+        <insert tableName="gate">
+            <column name="id" value="2"/>
+            <column name="number" value="gt2"/>
+            <column name="available" value="1"/>
+            <column name="unavailable_from" value="14:00:00"/>
+            <column name="unavailable_to" value="15:00:00"/>
+            <column name="created" value="2020-06-01 11:49:39"/>
+        </insert>
+
+
+        <insert tableName="flight">
+            <column name="id" value="1"/>
+            <column name="number" value="fl1"/>
+            <column name="arrival_time" value="2020-06-01 11:49:39"/>
+            <column name="created" value="2020-06-01 11:49:39"/>
+            <column name="gate_id" value="1"/>
+        </insert>
+        <insert tableName="flight">
+            <column name="id" value="2"/>
+            <column name="number" value="fl2"/>
+            <column name="arrival_time" value="2020-06-01 23:49:39"/>
+            <column name="created" value="2020-05-01 11:49:39"/>
+            <column name="gate_id" value="1"/>
+        </insert>
+        <insert tableName="flight">
+            <column name="id" value="3"/>
+            <column name="number" value="fl3"/>
+            <column name="arrival_time" value="2020-06-01 13:49:39"/>
+            <column name="created" value="2020-04-01 11:49:39"/>
+            <column name="gate_id" value="2"/>
+        </insert>
+
+
+
+    </changeSet>
+</databaseChangeLog>
